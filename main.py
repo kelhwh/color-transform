@@ -35,15 +35,18 @@ def select_method():
 
 def main():
 
-    print ('Hello! Welcome to color transform!')
-    artist, bits = pick_artist()
+    retry = 0
+    while retry==0:
+        print ('Hello! Welcome to color transform!')
+        artist, bits = pick_artist()
 
-    image_list = cluster_paintings(artist, bits)
-    target_pic = get_input_pic()
-    method = select_method()
+        image_list = cluster_paintings(artist, bits)
+        target_pic = get_input_pic()
+        method = select_method()
 
-    transform_my_pic(artist, target_pic,bits,image_list, output_width=300, method=method)
+        transform_my_pic(artist, target_pic,bits,image_list, output_width=300, method=method)
 
+        retry = SelectionMenu.get_selection(['Yes', 'No'], 'Do you want to try another picture?')
 
 
 
